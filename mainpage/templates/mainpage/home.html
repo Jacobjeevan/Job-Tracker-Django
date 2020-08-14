@@ -1,0 +1,23 @@
+{% extends "mainpage/base.html" %}
+{% load static %}
+{% block head %}
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static 'mainpage/home.css' %}">
+
+{% endblock %}
+{% block content %}
+<div id="map" class="main-map"></div>
+
+<script>
+    mapboxgl.accessToken = '{{ MAPBOX_KEY }}';
+    var dataobject = '{{ data|escapejs }}';
+    var map_center = '{{ map_center|escapejs }}';
+    var geojson = JSON.parse(dataobject);
+    geojson = geojson['data'];
+    map_center = JSON.parse(map_center);
+    zoom = 3;
+</script>
+<script src="../../static/mainpage/map.js"></script>
+
+{% endblock content %}

@@ -1,0 +1,92 @@
+.card-btn {
+  width: 25%;
+  padding: 10px;
+  text-align: center;
+  color: black;
+  border: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.job-title {
+  font-size: x-large;
+  padding: 5px;
+  margin-left: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.job-info {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1px;
+}
+
+.job-employer {
+  background-color: #ec9c56;
+  text-transform: uppercase;
+  font-size: smaller;
+  letter-spacing: 3px;
+}
+
+.job-employer:hover {
+  background-color: #d57e31;
+  color: white;
+}
+
+.job-location {
+  background-color: #87d38f;
+  text-transform: uppercase;
+  font-size: smaller;
+  letter-spacing: 3px;
+}
+
+.job-location:hover {
+  background-color: #56bb61;
+  color: white;
+}
+
+.job-date {
+  text-align: right;
+  flex-grow: 4;
+  background-color: #f1f5e9;
+}
+
+button.pagination {
+  background: #87d38f;
+  padding: 10px 15px;
+  border-radius: 1px;
+  border: none;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  box-shadow: 0px 1px 18px -11px;
+  color: black;
+  height: 45px;
+}
+
+button.active {
+  background: #46886f;
+}
+
+button.pagination:hover {
+  background: #56bb61;
+}
+
+.paginators {
+  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .job-employer {
+    font-size: xx-small;
+    letter-spacing: 1px;
+  }
+
+  .job-location {
+    letter-spacing: 1px;
+    font-size: xx-small;
+  }
+}

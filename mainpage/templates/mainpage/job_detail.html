@@ -1,0 +1,59 @@
+{% extends "mainpage/base.html" %}
+{% load static %}
+{% load markdown_extras %}
+{% block head %}
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static 'mainpage/job_detail.css' %}">
+
+{% endblock %}
+{% block content %}
+<div class="detail-section">
+    <div id="map" class="job-detail-map">
+    </div>
+
+    <script>
+        mapboxgl.accessToken = '{{ MAPBOX_KEY }}';
+        var dataobject = '{{ data|escapejs }}';
+        var map_center = '{{ map_center|escapejs }}';
+        var geojson = JSON.parse(dataobject);
+        geojson = geojson['data'];
+        map_center = JSON.parse(map_center);
+        zoom = 6;
+    </script>
+    <script src="../../static/mainpage/map.js"></script>
+
+
+    <div class="content-section">
+        <div class="job-info-detail">
+            <h2 class="job-title">{{ job.title }}</h2>
+            <a class="job-date-detail">{{ job.apply_date|date:"F d, Y"}}</a>
+        </div>
+    </div>
+
+    <div class="accordian-container">
+        <div class="content-section">
+            <div class="card-body">
+                <p class="job-description">{{ job.description| markdown | safe }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="job-detail-meta">
+        <a href="{% url 'employer-jobs' job.employer%}">
+            <button class="info-box">{{ job.employer }}</button>
+        </a>
+        <a href="{% url 'location-jobs' job.state job.city%}">
+            <button class="info-box">{{ job.city }},
+                {{ job.state }}</button>
+        </a>
+
+    </div>
+
+    {% if object.author == user %}
+    <a class="btn btn-sm btn-secondary mt-1 mb-1" href="{% url 'job-update' object.id %}">Update</a>
+    <a class="btn btn-sm btn-danger mt-1 mb-1" href="{% url 'job-delete' object.id %}">Delete</a>
+
+    {% endif %}
+</div>
+{% endblock content %}

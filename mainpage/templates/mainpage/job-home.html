@@ -1,0 +1,8 @@
+{% extends "mainpage/base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'mainpage/job_listing.css' %}">
+{% endblock %}
+{% block content %}
+   {% include "mainpage/job-listing.html" %}
+{% endblock content %}

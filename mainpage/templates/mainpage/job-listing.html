@@ -1,0 +1,36 @@
+{% for job in jobs%}
+<div class="content-section">
+    <div class="job-info">
+        <a class="job-employer card-btn" href="{% url 'employer-jobs' job.employer%}">{{ job.employer }}</a>
+        <a class="job-location card-btn" href="{% url 'location-jobs' job.state job.city%}">{{ job.city }},
+            {{ job.state }}</a>
+        <small class="job-date card-btn">{{ job.apply_date|date:"F d, Y"}}</small>
+    </div>
+    <div class="job-title">
+        <a href="{% url 'job-detail' job.id %}">{{ job.title }}</a>
+    </div>
+</div>
+{% endfor %}
+<div class="paginators">
+    {% if is_paginated %}
+    {% if page_obj.has_previous %}
+
+    <a href="?page=1"><button class="pagination">First</button></a>
+    <a href="?page={{ page_obj.previous_page_number }}"><button class="pagination">Previous</button></a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+    {% if page_obj.number == num %}
+    <a href="?page={{ num }}"><button class="pagination active">{{ num }}</button></a>
+    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+    <a href="?page={{ num }}"><button class="pagination">{{ num }}</button></a>
+    {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}"><button class="pagination">Next</button></a>
+    <a href="?page={{ page_obj.paginator.num_pages }}"><button class="pagination">Last</button></a>
+
+    {% endif %}
+    {% endif %}
+</div>
