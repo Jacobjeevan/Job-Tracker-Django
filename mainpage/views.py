@@ -43,8 +43,7 @@ class JobListView(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        user = self.kwargs.get('user')
-        currentuser = getUserorTestUser(user)
+        currentuser = getUserorTestUser(self.request.user)
         return Job.objects.filter(author=currentuser)
 
 
@@ -57,8 +56,7 @@ class LocationListView(ListView):
     def get_queryset(self):
         city = self.kwargs.get('city')
         state = self.kwargs.get('state')
-        user = self.kwargs.get('user')
-        currentuser = getUserorTestUser(user)
+        currentuser = getUserorTestUser(self.request.user)
         return Job.objects.filter(city=city, state=state, author=currentuser)
 
 
@@ -70,8 +68,7 @@ class EmployerListView(ListView):
 
     def get_queryset(self):
         employer = self.kwargs.get('employer')
-        user = self.kwargs.get('user')
-        currentuser = getUserorTestUser(user)
+        currentuser = getUserorTestUser(self.request.user)
         return Job.objects.filter(employer=employer, author=currentuser)
 
 
