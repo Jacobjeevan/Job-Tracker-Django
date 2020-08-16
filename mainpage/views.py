@@ -7,15 +7,17 @@ import random
 import requests
 import os
 import jsonpickle
+from users.models import User
 
 
 def home(request):
-    context = getData()
+    currentuser = getUserorTestUser(request.user)
+    context = getData(currentuser)
     return render(request, 'mainpage/home.html', context=context)
 
 
-def getData():
-    joblist = Job.objects.all()
+def getData(currentuser):
+    joblist = Job.objects.filter(author=currentuser).all()
     features = []
     for i in joblist:
         loc = Location.objects.filter(city=i.city, state=i.state).first()
@@ -28,11 +30,22 @@ def getData():
     return context
 
 
+def getUserorTestUser(currentuser):
+    if (currentuser is None or currentuser.is_anonymous):
+        return User.objects.filter(username='testUser').first()
+    return currentuser
+
+
 class JobListView(ListView):
     model = Job
     template_name = 'mainpage/job-home.html'
     context_object_name = 'jobs'
     paginate_by = 6
+
+    def get_queryset(self):
+        user = self.kwargs.get('user')
+        currentuser = getUserorTestUser(user)
+        return Job.objects.filter(author=currentuser)
 
 
 class LocationListView(ListView):
@@ -44,7 +57,9 @@ class LocationListView(ListView):
     def get_queryset(self):
         city = self.kwargs.get('city')
         state = self.kwargs.get('state')
-        return Job.objects.filter(city=city, state=state)
+        user = self.kwargs.get('user')
+        currentuser = getUserorTestUser(user)
+        return Job.objects.filter(city=city, state=state, author=currentuser)
 
 
 class EmployerListView(ListView):
@@ -55,7 +70,9 @@ class EmployerListView(ListView):
 
     def get_queryset(self):
         employer = self.kwargs.get('employer')
-        return Job.objects.filter(employer=employer)
+        user = self.kwargs.get('user')
+        currentuser = getUserorTestUser(user)
+        return Job.objects.filter(employer=employer, author=currentuser)
 
 
 class JobDetailView(DetailView):
