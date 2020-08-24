@@ -4,6 +4,8 @@ Objective: Build a job tracker app to keep track jobs I have applied to.
 
 This version uses Django Framework for both frontend and back.
 
+Refer to [Plan](docs/plan.md) for detailed implementation plan of the project.
+
 ### Deployments:
 
 - [Django backend with Django Frontend](https://jobtracker-django.herokuapp.com/)
@@ -12,6 +14,6 @@ This version uses Django Framework for both frontend and back.
 ### Progress:
 
 - [x] Better styling
-- [x] Repo Changes 
-    - [x] Cleanup/Publish to new public repo
-- [ ] Create Documentation file based on notes
+- [x] Repo Changes
+  - [x] Cleanup/Publish to new public repo
+- [x] Create Documentation file based on notes
