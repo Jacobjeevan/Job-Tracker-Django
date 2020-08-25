@@ -2,10 +2,10 @@
 <div class="content-section">
     <div class="job-info">
 
-        {% if job.status == "Yes" %}
+        {% if job.status == "yes" %}
         <a class="status-yes card-btn" href="{% url 'status-jobs' job.status%}"></a>
         <div class="status-yes"></div>
-        {% elif job.status == "Rejected" %}
+        {% elif job.status == "rejected" %}
         <a class="status-rejected card-btn" href="{% url 'status-jobs' job.status%}"></a>
         {% else %}
         <a class="status-noreply card-btn" href="{% url 'status-jobs' job.status%}"></a>
