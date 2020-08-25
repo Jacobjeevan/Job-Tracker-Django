@@ -44,7 +44,7 @@ class JobListView(ListView):
 
     def get_queryset(self):
         currentuser = getUserorTestUser(self.request.user)
-        return Job.objects.filter(author=currentuser)
+        return Job.objects.filter(author=currentuser).order_by('-apply_date', 'title')
 
 
 class LocationListView(ListView):
@@ -57,7 +57,7 @@ class LocationListView(ListView):
         city = self.kwargs.get('city')
         state = self.kwargs.get('state')
         currentuser = getUserorTestUser(self.request.user)
-        return Job.objects.filter(city=city, state=state, author=currentuser)
+        return Job.objects.filter(city=city, state=state, author=currentuser).order_by('-apply_date', 'title')
 
 
 class EmployerListView(ListView):
@@ -69,7 +69,7 @@ class EmployerListView(ListView):
     def get_queryset(self):
         employer = self.kwargs.get('employer')
         currentuser = getUserorTestUser(self.request.user)
-        return Job.objects.filter(employer=employer, author=currentuser)
+        return Job.objects.filter(employer=employer, author=currentuser).order_by('-apply_date', 'title')
 
 
 class StatusListView(ListView):
@@ -81,7 +81,7 @@ class StatusListView(ListView):
     def get_queryset(self):
         status = self.kwargs.get('status')
         currentuser = getUserorTestUser(self.request.user)
-        return Job.objects.filter(status=status, author=currentuser)
+        return Job.objects.filter(status=status, author=currentuser).order_by('-apply_date', 'title')
 
 
 class JobDetailView(DetailView):
