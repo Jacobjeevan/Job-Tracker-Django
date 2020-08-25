@@ -1,6 +1,16 @@
 {% for job in jobs%}
 <div class="content-section">
     <div class="job-info">
+
+        {% if job.status == "Yes" %}
+        <a class="status-yes card-btn" href="{% url 'status-jobs' job.status%}"></a>
+        <div class="status-yes"></div>
+        {% elif job.status == "Rejected" %}
+        <a class="status-rejected card-btn" href="{% url 'status-jobs' job.status%}"></a>
+        {% else %}
+        <a class="status-noreply card-btn" href="{% url 'status-jobs' job.status%}"></a>
+        {% endif %}
+
         <a class="job-employer card-btn" href="{% url 'employer-jobs' job.employer%}">{{ job.employer }}</a>
         <a class="job-location card-btn" href="{% url 'location-jobs' job.state job.city%}">{{ job.city }},
             {{ job.state }}</a>

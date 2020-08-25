@@ -78,6 +78,24 @@ button.pagination:hover {
   justify-content: flex-start;
 }
 
+.status-yes {
+  background-color: #46886f;
+  order: 99;
+  width: 10px;
+}
+
+.status-rejected {
+  order: 99;
+  background-color: crimson;
+  width: 10px;
+}
+
+.status-noreply {
+  order: 99;
+  background-color: darkgrey;
+  width: 10px;
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .job-employer {

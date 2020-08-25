@@ -72,6 +72,18 @@ class EmployerListView(ListView):
         return Job.objects.filter(employer=employer, author=currentuser)
 
 
+class StatusListView(ListView):
+    model = Job
+    template_name = 'mainpage/status_jobs.html'
+    context_object_name = 'jobs'
+    paginate_by = 6
+
+    def get_queryset(self):
+        status = self.kwargs.get('status')
+        currentuser = getUserorTestUser(self.request.user)
+        return Job.objects.filter(status=status, author=currentuser)
+
+
 class JobDetailView(DetailView):
     model = Job
 
@@ -99,7 +111,7 @@ class JobDetailView(DetailView):
 class JobCreateView(LoginRequiredMixin, CreateView):
     model = Job
     fields = ['title', 'employer', 'apply_date',
-              'description', 'city', 'state']
+              'description', 'status', 'city', 'state']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -113,7 +125,7 @@ class JobCreateView(LoginRequiredMixin, CreateView):
 class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Job
     fields = ['title', 'employer', 'apply_date',
-              'description', 'city', 'state']
+              'description', 'status', 'city', 'state']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
