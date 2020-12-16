@@ -1,4 +1,6 @@
 media/
+Docker-setup
+OLD-docker-testing/
 pass.txt
 Pipfile
 Pipfile.lock

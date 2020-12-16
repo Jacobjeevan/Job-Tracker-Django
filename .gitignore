@@ -1,6 +1,8 @@
 .env
 .env.db
 .env.prod.db
+Docker-setup
+OLD-docker-testing/
 media/
 db.sqlite3
 pass.txt
