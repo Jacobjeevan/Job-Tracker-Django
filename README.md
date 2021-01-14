@@ -1,4 +1,4 @@
-# Job Tracker
+# Job Tracker (Django Frontend/Backend)
 
 #### Objectives
 
@@ -11,8 +11,8 @@ Refer to [Plan](docs/plan.md) for detailed implementation plan of the project.
 
 ### Deployments :rocket:
 
-- [Job Tracker - Django](https://jt-django.jeevan.link/) New Deployment using Buddy and Docker containers
-- [Job Tracker - Django on Heroku](https://jobtracker-django.herokuapp.com/) Original Deployment
+- [Job Tracker](https://jt-django.jeevan.link/): New Deployment using Buddy and Docker containers
+- [Job Tracker](https://jobtracker-django.herokuapp.com/): Original Deployment on Heroku
 
 ### Other Versions
 
