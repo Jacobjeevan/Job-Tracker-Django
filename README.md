@@ -1,15 +1,22 @@
 # Job Tracker
 
-Objective: Build a job tracker app to keep track jobs I have applied to.
+#### Objectives
 
-This version uses Django Framework for both frontend and back.
+- Build a job tracker app to keep track jobs I have applied to.
+- Rebuild the app in other languages to learn and strength my understanding of other languages
+
+This version uses Django Framework for both frontend and backend.
 
 Refer to [Plan](docs/plan.md) for detailed implementation plan of the project.
 
-### Deployments:
+### Deployments :rocket:
 
-- [Django backend with Django Frontend](https://jobtracker-django.herokuapp.com/)
-- [Django with REST backend with React Frontend](https://jobtracker-react.herokuapp.com/)
+- [Job Tracker - Django](https://jt-django.jeevan.link/) New Deployment using Buddy and Docker containers
+- [Job Tracker - Django on Heroku](https://jobtracker-django.herokuapp.com/) Original Deployment
+
+### Other Versions
+
+- [Job Tracker - React/Django](https://github.com/Jacobjeevan/Job-Tracker)
 
 ### Progress:
 
@@ -17,3 +24,7 @@ Refer to [Plan](docs/plan.md) for detailed implementation plan of the project.
 - [x] Repo Changes
   - [x] Cleanup/Publish to new public repo
 - [x] Create Documentation file based on notes
+- [x] Containerize the app
+- [x] Migrate to Digital Ocean droplet and move to custom domain
+- [ ] Create a landing page
+  - Overview of available features with screenshots
